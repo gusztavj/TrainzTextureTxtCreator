@@ -69,31 +69,33 @@ namespace TrainzTextureTxtCreator
 
                 if (file.Contains("albedo.png"))
                 {
-                    contents += $"Primary={pureFileName}.png\n";
+                    contents += $"Primary={pureFileName}.png\r\n";
                     contents += $"Tile=st";
                     lbLog.Items.Add($"{++itemIx}. Created albedo descriptor for {Path.GetFileName(file)}");
                 }
 
                 if (file.Contains("normal.png"))
                 {
-                    contents += $"Primary={pureFileName}.png\n";
-                    contents += $"Alpha={pureFileName}.png\n";
-                    contents += $"NormalMapHint=normalmap\n";
+                    contents += $"Primary={pureFileName}.png\r\n";
+                    contents += $"Alpha={pureFileName}.png\r\n";
+                    contents += $"NormalMapHint=normalmap\r\n";
                     contents += $"Tile=st";
                     lbLog.Items.Add($"{++itemIx}. Created normal descriptor for {Path.GetFileName(file)}");
                 }
 
                 if (file.Contains("parameter.png") || file.Contains("parameters.png"))
                 {
-                    contents += $"Primary={pureFileName}.png\n";
-                    contents += $"Alpha={pureFileName}.png\n";
+                    contents += $"Primary={pureFileName}.png\r\n";
+                    contents += $"Alpha={pureFileName}.png\r\n";
+                    contents += $"MipAlgorithm=no-weight-by-alpha\r\n";
+                    contents += $"NormalMapHint=none\r\n";
                     contents += $"Tile=st";
                     lbLog.Items.Add($"{++itemIx}. Created parameter descriptor for {Path.GetFileName(file)}");
                 }
 
 
                 string textureFile = Path.Combine(ImagePath, pureFileName + ".texture.txt");
-                File.WriteAllText(textureFile, contents);
+                File.WriteAllText(textureFile, contents, Encoding.ASCII);
                 lbLog.Items.Add($"\tFile {textureFile} written successfully");
             }
             lbLog.Items.Add($"Done");
