@@ -68,6 +68,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
             }
         }
         "Release"
@@ -237,15 +245,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Trainz Texture.txt Creator"
-        "ProductCode" = "8:{F4FA66CE-9BCF-40ED-9107-DC2F3CACCD3E}"
-        "PackageCode" = "8:{15621F29-09DD-4EFC-B696-C60C60764D5C}"
+        "ProductCode" = "8:{0618CDD0-C073-4947-B243-80094816B15A}"
+        "PackageCode" = "8:{AA91F13E-882A-4D03-900F-C4F320BF9514}"
         "UpgradeCode" = "8:{30649CA1-F302-49F6-A89C-4974242F45C9}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.0"
+        "ProductVersion" = "8:1.1.0"
         "Manufacturer" = "8:T1nk-R"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:https://github.com/gusztavj/TrainzTextureTxtCreator"
