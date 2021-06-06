@@ -34,13 +34,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_B9373490FF28AC370D4F8D5E3776A812"
+        "OwnerKey" = "8:_116211F7512D4D7C87C6FCCCCBFF4E2A"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_116211F7512D4D7C87C6FCCCCBFF4E2A"
+        "OwnerKey" = "8:_B9373490FF28AC370D4F8D5E3776A812"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -61,6 +61,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
         "Release"
         {
@@ -77,6 +85,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
+            }
         }
     }
     "Deployable"
@@ -212,9 +236,9 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:TrainzTextureTxtCreator Installer"
+        "ProductName" = "8:Trainz Texture.txt Creator"
         "ProductCode" = "8:{F4FA66CE-9BCF-40ED-9107-DC2F3CACCD3E}"
-        "PackageCode" = "8:{3B444755-09DD-4A76-B64B-63ADF198AD01}"
+        "PackageCode" = "8:{15621F29-09DD-4EFC-B696-C60C60764D5C}"
         "UpgradeCode" = "8:{30649CA1-F302-49F6-A89C-4974242F45C9}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
@@ -334,6 +358,34 @@
         }
         "Shortcut"
         {
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_844614A3015F4CC29900AD15D3AD9B05"
+            {
+            "Name" = "8:Trainz Texture.txt Creator"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_116211F7512D4D7C87C6FCCCCBFF4E2A"
+            "Folder" = "8:_595CEB5A1F824DA1818DA9B425659B54"
+            "WorkingFolder" = "8:_C2C0600B21AA41EF9BB96096CE317EF7"
+            "Icon" = "8:_3A0B136EF51F44B489D7CAFC40952A09"
+            "Feature" = "8:"
+            }
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_98EC5AF99465493CBEEE53ED31ADFCEF"
+            {
+            "Name" = "8:Trainz Texture.txt Creator"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_116211F7512D4D7C87C6FCCCCBFF4E2A"
+            "Folder" = "8:_6573876195BE4AC18DC0F96C253B9C83"
+            "WorkingFolder" = "8:_C2C0600B21AA41EF9BB96096CE317EF7"
+            "Icon" = "8:_3A0B136EF51F44B489D7CAFC40952A09"
+            "Feature" = "8:"
+            }
         }
         "UserInterface"
         {
