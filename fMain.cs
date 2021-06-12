@@ -51,6 +51,10 @@ namespace TrainzTextureTxtCreator
         private void fMain_Load(object sender, EventArgs e)
         {
             eFolderPath.Text = ImagePath;
+            if (ImagePath.Length > 0)
+            {
+                this.ActiveControl = cmdGO;
+            }
         }
 
         private void cmdGO_Click(object sender, EventArgs e)
@@ -61,45 +65,72 @@ namespace TrainzTextureTxtCreator
 
             lbLog.Items.Add($"Started processing {ImagePath}...");
             int itemIx = 0;
+            bool recognized;
 
             foreach (string file in files)
             {
                 string pureFileName = Path.GetFileNameWithoutExtension(file);
                 string contents = "";
+                recognized = false;
 
-                if (file.Contains("albedo.png"))
+                if (    file.Contains("albedo.png") 
+                    ||  file.Contains("basecolor.png") 
+                    ||  file.Contains("base_color.png") 
+                    ||  file.Contains("diffuse.png")
+                   )
                 {
+                    recognized = true;
                     contents += $"Primary={pureFileName}.png\r\n";
-                    contents += $"Tile=st";
-                    lbLog.Items.Add($"{++itemIx}. Created albedo descriptor for {Path.GetFileName(file)}");
+                    contents += $"Tile=st";                    
+                    lbLog.Items.Add($"{++itemIx + ".",-3}\tCreated albedo descriptor for {Path.GetFileName(file)}");
                 }
 
                 if (file.Contains("normal.png"))
                 {
+                    recognized = true;
                     contents += $"Primary={pureFileName}.png\r\n";
                     contents += $"Alpha={pureFileName}.png\r\n";
                     contents += $"NormalMapHint=normalmap\r\n";
                     contents += $"Tile=st";
-                    lbLog.Items.Add($"{++itemIx}. Created normal descriptor for {Path.GetFileName(file)}");
+                    lbLog.Items.Add($"{++itemIx + ".", -3}\tCreated normal descriptor for {Path.GetFileName(file)}");
                 }
 
-                if (file.Contains("parameter.png") || file.Contains("parameters.png"))
+                if (    file.Contains("parameter.png") 
+                    ||  file.Contains("parameters.png"))
                 {
+                    recognized = true;
                     contents += $"Primary={pureFileName}.png\r\n";
                     contents += $"Alpha={pureFileName}.png\r\n";
                     contents += $"MipAlgorithm=no-weight-by-alpha\r\n";
                     contents += $"NormalMapHint=none\r\n";
                     contents += $"Tile=st";
-                    lbLog.Items.Add($"{++itemIx}. Created parameter descriptor for {Path.GetFileName(file)}");
+                    lbLog.Items.Add($"{++itemIx + ".", -3}\tCreated parameter descriptor for {Path.GetFileName(file)}");
                 }
 
-
-                string textureFile = Path.Combine(ImagePath, pureFileName + ".texture.txt");
-                File.WriteAllText(textureFile, contents, Encoding.ASCII);
-                lbLog.Items.Add($"\tFile {textureFile} written successfully");
+                if (recognized)
+                {
+                    string textureFile = Path.Combine(ImagePath, pureFileName + ".texture.txt");
+                    File.WriteAllText(textureFile, contents, Encoding.ASCII);
+                    lbLog.Items.Add($"\t\tFile {textureFile} written successfully");
+                } 
+                else
+                {
+                    lbLog.Items.Add($"***\tFile {Path.GetFileName(file)} not recognized, no texture file created");
+                }
             }
             lbLog.Items.Add($"Done");
 
+        }
+
+        private void menuCommandAbout_Click(object sender, EventArgs e)
+        {
+            About aboutForm = new About();
+            aboutForm.ShowDialog();
+        }
+
+        private void menuCommandHelp_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/gusztavj/TrainzTextureTxtCreator");
         }
     }
 }
