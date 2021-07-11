@@ -16,13 +16,33 @@ namespace TrainzTextureTxtCreator
 
         private string ImagePath
         {
-            get { return Properties.Settings.Default.FolderPath; }
+            get { 
+                string s = Properties.Settings.Default.FolderPath;
+                return Properties.Settings.Default.FolderPath; }
             set { Properties.Settings.Default.FolderPath = value; }
             
         }
+
+        private AlphaTypeCodes AlphaType
+        {
+            get {
+                try
+                {
+                    return (AlphaTypeCodes)Enum.Parse(typeof(AlphaTypeCodes), Properties.Settings.Default.SelectedAlphaType);
+                }
+                catch {
+                    return AlphaTypeCodes.Omit;
+                }
+            }
+            set { Properties.Settings.Default.SelectedAlphaType = value.ToString(); }
+        }
+
+        private AlphaTypes SupportedAlphaTags = new AlphaTypes();
+
         public fMain()
         {
             InitializeComponent();
+            alphaTypesBindingSource.DataSource = SupportedAlphaTags;
         }
 
         private void cmdSelectFolder_Click(object sender, EventArgs e)
@@ -55,11 +75,14 @@ namespace TrainzTextureTxtCreator
             {
                 this.ActiveControl = cmdGO;
             }
+            cbAlphaTypes.SelectedValue = AlphaType;
         }
 
         private void cmdGO_Click(object sender, EventArgs e)
         {
             ImagePath = eFolderPath.Text;
+            AlphaType = (AlphaTypeCodes)Enum.Parse(typeof(AlphaTypeCodes), cbAlphaTypes.SelectedValue.ToString());
+
             List<string> files = Directory.GetFiles(Path.Combine(ImagePath), "*.png").ToList<string>();
             //IEnumerable<string> normals = files.Where(file => file.Contains("normal.png"));
 
@@ -81,7 +104,27 @@ namespace TrainzTextureTxtCreator
                 {
                     recognized = true;
                     contents += $"Primary={pureFileName}.png\r\n";
-                    contents += $"Tile=st";                    
+                    
+                    switch (AlphaType)
+                    {
+                        case AlphaTypeCodes.None:
+                            contents += $"Alpha={pureFileName}.png\r\n";
+                            contents += "AlphaHint=opaque\r\n";
+                            break;
+                        case AlphaTypeCodes.Blend:
+                            contents += $"Alpha={pureFileName}.png\r\n";
+                            contents += "AlphaHint=semitransparent\r\n";
+                            break;
+                        case AlphaTypeCodes.Clamp:
+                            contents += $"Alpha={pureFileName}.png\r\n";
+                            contents += "AlphaHint=masked\r\n";
+                            break;
+                        case AlphaTypeCodes.Omit:
+                        default:
+                            break;
+                    }
+
+                    contents += $"Tile=st";
                     lbLog.Items.Add($"{++itemIx + ".",-3}\tCreated albedo descriptor for {Path.GetFileName(file)}");
                 }
 

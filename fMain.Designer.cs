@@ -29,6 +29,7 @@ namespace TrainzTextureTxtCreator
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fMain));
             this.cmdSelectFolder = new System.Windows.Forms.Button();
             this.lblName = new System.Windows.Forms.Label();
@@ -42,7 +43,11 @@ namespace TrainzTextureTxtCreator
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuCommandAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.menuCommandHelp = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblAlpha = new System.Windows.Forms.Label();
+            this.cbAlphaTypes = new System.Windows.Forms.ComboBox();
+            this.alphaTypesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.menuMain.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.alphaTypesBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // cmdSelectFolder
@@ -87,7 +92,7 @@ namespace TrainzTextureTxtCreator
             // 
             this.cmdGO.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmdGO.Location = new System.Drawing.Point(18, 62);
+            this.cmdGO.Location = new System.Drawing.Point(18, 88);
             this.cmdGO.Name = "cmdGO";
             this.cmdGO.Size = new System.Drawing.Size(747, 23);
             this.cmdGO.TabIndex = 2;
@@ -101,9 +106,9 @@ namespace TrainzTextureTxtCreator
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lbLog.FormattingEnabled = true;
-            this.lbLog.Location = new System.Drawing.Point(15, 91);
+            this.lbLog.Location = new System.Drawing.Point(15, 117);
             this.lbLog.Name = "lbLog";
-            this.lbLog.Size = new System.Drawing.Size(747, 277);
+            this.lbLog.Size = new System.Drawing.Size(747, 290);
             this.lbLog.TabIndex = 3;
             // 
             // cmdExit
@@ -111,7 +116,7 @@ namespace TrainzTextureTxtCreator
             this.cmdExit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cmdExit.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.cmdExit.Location = new System.Drawing.Point(12, 382);
+            this.cmdExit.Location = new System.Drawing.Point(12, 425);
             this.cmdExit.Name = "cmdExit";
             this.cmdExit.Size = new System.Drawing.Size(747, 23);
             this.cmdExit.TabIndex = 4;
@@ -146,22 +151,48 @@ namespace TrainzTextureTxtCreator
             // menuCommandAbout
             // 
             this.menuCommandAbout.Name = "menuCommandAbout";
-            this.menuCommandAbout.Size = new System.Drawing.Size(180, 22);
+            this.menuCommandAbout.Size = new System.Drawing.Size(158, 22);
             this.menuCommandAbout.Text = "&About";
             this.menuCommandAbout.Click += new System.EventHandler(this.menuCommandAbout_Click);
             // 
             // menuCommandHelp
             // 
             this.menuCommandHelp.Name = "menuCommandHelp";
-            this.menuCommandHelp.Size = new System.Drawing.Size(180, 22);
+            this.menuCommandHelp.Size = new System.Drawing.Size(158, 22);
             this.menuCommandHelp.Text = "&Help && Updates";
             this.menuCommandHelp.Click += new System.EventHandler(this.menuCommandHelp_Click);
+            // 
+            // lblAlpha
+            // 
+            this.lblAlpha.AutoSize = true;
+            this.lblAlpha.Location = new System.Drawing.Point(12, 62);
+            this.lblAlpha.Name = "lblAlpha";
+            this.lblAlpha.Size = new System.Drawing.Size(72, 13);
+            this.lblAlpha.TabIndex = 8;
+            this.lblAlpha.Text = "Albedo alpha:";
+            // 
+            // cbAlphaTypes
+            // 
+            this.cbAlphaTypes.DataSource = this.alphaTypesBindingSource;
+            this.cbAlphaTypes.DisplayMember = "Name";
+            this.cbAlphaTypes.FormattingEnabled = true;
+            this.cbAlphaTypes.Location = new System.Drawing.Point(179, 62);
+            this.cbAlphaTypes.Name = "cbAlphaTypes";
+            this.cbAlphaTypes.Size = new System.Drawing.Size(190, 21);
+            this.cbAlphaTypes.TabIndex = 9;
+            this.cbAlphaTypes.ValueMember = "Value";
+            // 
+            // alphaTypesBindingSource
+            // 
+            this.alphaTypesBindingSource.DataSource = typeof(TrainzTextureTxtCreator.AlphaTypes);
             // 
             // fMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(774, 415);
+            this.ClientSize = new System.Drawing.Size(774, 458);
+            this.Controls.Add(this.cbAlphaTypes);
+            this.Controls.Add(this.lblAlpha);
             this.Controls.Add(this.cmdExit);
             this.Controls.Add(this.lbLog);
             this.Controls.Add(this.cmdGO);
@@ -178,6 +209,7 @@ namespace TrainzTextureTxtCreator
             this.Load += new System.EventHandler(this.fMain_Load);
             this.menuMain.ResumeLayout(false);
             this.menuMain.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.alphaTypesBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -197,6 +229,9 @@ namespace TrainzTextureTxtCreator
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem menuCommandAbout;
         private System.Windows.Forms.ToolStripMenuItem menuCommandHelp;
+        private System.Windows.Forms.Label lblAlpha;
+        private System.Windows.Forms.ComboBox cbAlphaTypes;
+        private System.Windows.Forms.BindingSource alphaTypesBindingSource;
     }
 }
 
