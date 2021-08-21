@@ -46,6 +46,7 @@ namespace TrainzTextureTxtCreator
             this.lblAlpha = new System.Windows.Forms.Label();
             this.cbAlphaTypes = new System.Windows.Forms.ComboBox();
             this.alphaTypesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.chkOmitNormalAlpha = new System.Windows.Forms.CheckBox();
             this.menuMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.alphaTypesBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -56,7 +57,7 @@ namespace TrainzTextureTxtCreator
             this.cmdSelectFolder.Location = new System.Drawing.Point(687, 33);
             this.cmdSelectFolder.Name = "cmdSelectFolder";
             this.cmdSelectFolder.Size = new System.Drawing.Size(75, 23);
-            this.cmdSelectFolder.TabIndex = 1;
+            this.cmdSelectFolder.TabIndex = 3;
             this.cmdSelectFolder.Text = "&Select folder";
             this.cmdSelectFolder.UseVisualStyleBackColor = true;
             this.cmdSelectFolder.Click += new System.EventHandler(this.cmdSelectFolder_Click);
@@ -64,11 +65,11 @@ namespace TrainzTextureTxtCreator
             // lblName
             // 
             this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(12, 38);
+            this.lblName.Location = new System.Drawing.Point(15, 38);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(103, 13);
             this.lblName.TabIndex = 1;
-            this.lblName.Text = "Folder of image files:";
+            this.lblName.Text = "&Folder of image files:";
             // 
             // label1
             // 
@@ -86,16 +87,16 @@ namespace TrainzTextureTxtCreator
             this.eFolderPath.Location = new System.Drawing.Point(179, 35);
             this.eFolderPath.Name = "eFolderPath";
             this.eFolderPath.Size = new System.Drawing.Size(502, 20);
-            this.eFolderPath.TabIndex = 0;
+            this.eFolderPath.TabIndex = 2;
             // 
             // cmdGO
             // 
             this.cmdGO.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmdGO.Location = new System.Drawing.Point(18, 88);
+            this.cmdGO.Location = new System.Drawing.Point(12, 88);
             this.cmdGO.Name = "cmdGO";
-            this.cmdGO.Size = new System.Drawing.Size(747, 23);
-            this.cmdGO.TabIndex = 2;
+            this.cmdGO.Size = new System.Drawing.Size(753, 23);
+            this.cmdGO.TabIndex = 7;
             this.cmdGO.Text = "&GO";
             this.cmdGO.UseVisualStyleBackColor = true;
             this.cmdGO.Click += new System.EventHandler(this.cmdGO_Click);
@@ -109,7 +110,7 @@ namespace TrainzTextureTxtCreator
             this.lbLog.Location = new System.Drawing.Point(15, 117);
             this.lbLog.Name = "lbLog";
             this.lbLog.Size = new System.Drawing.Size(747, 290);
-            this.lbLog.TabIndex = 3;
+            this.lbLog.TabIndex = 8;
             // 
             // cmdExit
             // 
@@ -119,7 +120,7 @@ namespace TrainzTextureTxtCreator
             this.cmdExit.Location = new System.Drawing.Point(12, 425);
             this.cmdExit.Name = "cmdExit";
             this.cmdExit.Size = new System.Drawing.Size(747, 23);
-            this.cmdExit.TabIndex = 4;
+            this.cmdExit.TabIndex = 9;
             this.cmdExit.Text = "&Bye";
             this.cmdExit.UseVisualStyleBackColor = true;
             this.cmdExit.Click += new System.EventHandler(this.cmdExit_Click);
@@ -151,25 +152,25 @@ namespace TrainzTextureTxtCreator
             // menuCommandAbout
             // 
             this.menuCommandAbout.Name = "menuCommandAbout";
-            this.menuCommandAbout.Size = new System.Drawing.Size(158, 22);
+            this.menuCommandAbout.Size = new System.Drawing.Size(180, 22);
             this.menuCommandAbout.Text = "&About";
             this.menuCommandAbout.Click += new System.EventHandler(this.menuCommandAbout_Click);
             // 
             // menuCommandHelp
             // 
             this.menuCommandHelp.Name = "menuCommandHelp";
-            this.menuCommandHelp.Size = new System.Drawing.Size(158, 22);
+            this.menuCommandHelp.Size = new System.Drawing.Size(180, 22);
             this.menuCommandHelp.Text = "&Help && Updates";
             this.menuCommandHelp.Click += new System.EventHandler(this.menuCommandHelp_Click);
             // 
             // lblAlpha
             // 
             this.lblAlpha.AutoSize = true;
-            this.lblAlpha.Location = new System.Drawing.Point(12, 62);
+            this.lblAlpha.Location = new System.Drawing.Point(15, 62);
             this.lblAlpha.Name = "lblAlpha";
             this.lblAlpha.Size = new System.Drawing.Size(72, 13);
-            this.lblAlpha.TabIndex = 8;
-            this.lblAlpha.Text = "Albedo alpha:";
+            this.lblAlpha.TabIndex = 4;
+            this.lblAlpha.Text = "&Albedo alpha:";
             // 
             // cbAlphaTypes
             // 
@@ -179,18 +180,29 @@ namespace TrainzTextureTxtCreator
             this.cbAlphaTypes.Location = new System.Drawing.Point(179, 62);
             this.cbAlphaTypes.Name = "cbAlphaTypes";
             this.cbAlphaTypes.Size = new System.Drawing.Size(190, 21);
-            this.cbAlphaTypes.TabIndex = 9;
+            this.cbAlphaTypes.TabIndex = 5;
             this.cbAlphaTypes.ValueMember = "Value";
             // 
             // alphaTypesBindingSource
             // 
             this.alphaTypesBindingSource.DataSource = typeof(TrainzTextureTxtCreator.AlphaTypes);
             // 
+            // chkOmitNormalAlpha
+            // 
+            this.chkOmitNormalAlpha.AutoSize = true;
+            this.chkOmitNormalAlpha.Location = new System.Drawing.Point(403, 64);
+            this.chkOmitNormalAlpha.Name = "chkOmitNormalAlpha";
+            this.chkOmitNormalAlpha.Size = new System.Drawing.Size(260, 17);
+            this.chkOmitNormalAlpha.TabIndex = 6;
+            this.chkOmitNormalAlpha.Text = "&Do not add alpha parameter to normal texture files";
+            this.chkOmitNormalAlpha.UseVisualStyleBackColor = true;
+            // 
             // fMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(774, 458);
+            this.Controls.Add(this.chkOmitNormalAlpha);
             this.Controls.Add(this.cbAlphaTypes);
             this.Controls.Add(this.lblAlpha);
             this.Controls.Add(this.cmdExit);
@@ -232,6 +244,7 @@ namespace TrainzTextureTxtCreator
         private System.Windows.Forms.Label lblAlpha;
         private System.Windows.Forms.ComboBox cbAlphaTypes;
         private System.Windows.Forms.BindingSource alphaTypesBindingSource;
+        private System.Windows.Forms.CheckBox chkOmitNormalAlpha;
     }
 }
 

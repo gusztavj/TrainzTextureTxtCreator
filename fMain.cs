@@ -16,11 +16,15 @@ namespace TrainzTextureTxtCreator
 
         private string ImagePath
         {
-            get { 
-                string s = Properties.Settings.Default.FolderPath;
-                return Properties.Settings.Default.FolderPath; }
+            get { return Properties.Settings.Default.FolderPath; }
             set { Properties.Settings.Default.FolderPath = value; }
             
+        }
+
+        private bool OmitNormalAlpha
+        {
+            get { return Properties.Settings.Default.OmitNormalAlpha;  }
+            set { Properties.Settings.Default.OmitNormalAlpha = value; }
         }
 
         private AlphaTypeCodes AlphaType
@@ -75,13 +79,16 @@ namespace TrainzTextureTxtCreator
             {
                 this.ActiveControl = cmdGO;
             }
+           
             cbAlphaTypes.SelectedValue = AlphaType;
-        }
+            chkOmitNormalAlpha.Checked = OmitNormalAlpha;
+           }
 
         private void cmdGO_Click(object sender, EventArgs e)
         {
             ImagePath = eFolderPath.Text;
             AlphaType = (AlphaTypeCodes)Enum.Parse(typeof(AlphaTypeCodes), cbAlphaTypes.SelectedValue.ToString());
+            OmitNormalAlpha = chkOmitNormalAlpha.Checked;
 
             List<string> files = Directory.GetFiles(Path.Combine(ImagePath), "*.png").ToList<string>();
             //IEnumerable<string> normals = files.Where(file => file.Contains("normal.png"));
@@ -132,7 +139,10 @@ namespace TrainzTextureTxtCreator
                 {
                     recognized = true;
                     contents += $"Primary={pureFileName}.png\r\n";
-                    contents += $"Alpha={pureFileName}.png\r\n";
+                    if (!OmitNormalAlpha)
+                    {
+                        contents += $"Alpha={pureFileName}.png\r\n";
+                    }
                     contents += $"NormalMapHint=normalmap\r\n";
                     contents += $"Tile=st";
                     lbLog.Items.Add($"{++itemIx + ".", -3}\tCreated normal descriptor for {Path.GetFileName(file)}");
@@ -162,6 +172,8 @@ namespace TrainzTextureTxtCreator
                 }
             }
             lbLog.Items.Add($"Done");
+
+            lbLog.SelectedIndex = lbLog.Items.Count - 1;
 
         }
 

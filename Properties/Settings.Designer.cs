@@ -46,5 +46,17 @@ namespace TrainzTextureTxtCreator.Properties {
                 this["SelectedAlphaType"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool OmitNormalAlpha {
+            get {
+                return ((bool)(this["OmitNormalAlpha"]));
+            }
+            set {
+                this["OmitNormalAlpha"] = value;
+            }
+        }
     }
 }
